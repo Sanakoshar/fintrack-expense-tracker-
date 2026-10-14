@@ -10,6 +10,14 @@ const TransactionSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Please add a positive or negative number']
   },
+  category: {
+    type: String,
+    default: 'Other'
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  },
   createdAt: {
     type: Date,
     default: Date.now

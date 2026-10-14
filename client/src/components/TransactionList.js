@@ -1,22 +1,19 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { Transaction } from './Transaction';
 
-import { GlobalContext } from '../context/GlobalState';
-
-export const TransactionList = () => {
-  const { transactions, getTransactions } = useContext(GlobalContext);
-
-  useEffect(() => {
-    getTransactions();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+export const TransactionList = ({ transactions }) => {
   return (
     <>
       <h3>History</h3>
-      <ul className="list">
-        {transactions.map(transaction => (<Transaction key={transaction._id} transaction={transaction} />))}
-      </ul>
+      {transactions.length === 0 ? (
+        <p className="empty">No transactions found.</p>
+      ) : (
+        <ul className="list">
+          {transactions.map(t => (
+            <Transaction key={t._id} transaction={t} />
+          ))}
+        </ul>
+      )}
     </>
-  )
-}
+  );
+};

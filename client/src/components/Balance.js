@@ -1,18 +1,15 @@
-import React, { useContext } from 'react';
-import { GlobalContext } from '../context/GlobalState';
-import { numberWithCommas } from '../utils/format';
+import React from 'react';
+import { formatMoney } from '../utils/format';
 
-export const Balance = () => {
-  const { transactions } = useContext(GlobalContext);
-
-  const amounts = transactions.map(transaction => transaction.amount);
-
-  const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
+export const Balance = ({ transactions }) => {
+  const total = transactions.reduce((acc, t) => acc + t.amount, 0);
 
   return (
     <>
       <h4>Your Balance</h4>
-    <h1>${numberWithCommas(total)}</h1>
+      <h1>
+        {total < 0 ? '-' : ''}₹{formatMoney(Math.abs(total))}
+      </h1>
     </>
-  )
-}
+  );
+};
