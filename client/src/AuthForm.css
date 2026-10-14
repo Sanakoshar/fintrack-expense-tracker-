@@ -1,0 +1,162 @@
+.ft-auth {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #070b17;
+  font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.ft-auth *, .ft-auth *::before, .ft-auth *::after { box-sizing: border-box; }
+
+.ft-auth-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.ft-auth-glow-one { width: 420px; height: 420px; background: #7c5cff; top: -120px; left: -100px; }
+.ft-auth-glow-two { width: 380px; height: 380px; background: #22d3ee; bottom: -120px; right: -80px; }
+
+.ft-auth-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1020px;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+}
+
+/* ---------- Left: brand panel ---------- */
+.ft-brand-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 36px;
+  color: #e8ecf8;
+  background: linear-gradient(160deg, #141a35 0%, #0d1128 100%);
+  overflow: hidden;
+}
+
+.ft-logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; color: #fff; }
+.ft-logo-icon {
+  display: inline-grid; place-items: center;
+  width: 34px; height: 34px; border-radius: 10px;
+  background: linear-gradient(135deg, #7c5cff, #22d3ee);
+  color: #fff; font-weight: 800;
+}
+.ft-logo-dot { color: #22d3ee; }
+
+.ft-eyebrow { font-size: 12px; letter-spacing: 0.14em; color: #22d3ee; font-weight: 700; }
+.ft-brand-copy h1 { margin: 10px 0 12px; font-size: 40px; line-height: 1.1; color: #fff; }
+.ft-brand-copy h1 span {
+  background: linear-gradient(90deg, #a78bfa, #22d3ee);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.ft-brand-copy p { margin: 0 0 16px; color: #aab3d1; line-height: 1.6; font-size: 15px; }
+.ft-feature-list { display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: #cfd6ee; }
+
+/* floating money + preview */
+.ft-money-scene { position: relative; margin-top: auto; min-height: 210px; }
+.ft-currency {
+  position: absolute; display: grid; place-items: center;
+  border-radius: 50%; font-weight: 800; color: #fff;
+  background: linear-gradient(135deg, #7c5cff, #22d3ee);
+  box-shadow: 0 10px 24px rgba(124, 92, 255, 0.4);
+  animation: ft-float 5s ease-in-out infinite;
+  z-index: 2;
+}
+.ft-currency-dollar { width: 46px; height: 46px; font-size: 22px; top: -14px; right: 6px; }
+.ft-currency-rupee { width: 40px; height: 40px; font-size: 20px; bottom: 10px; right: -6px; animation-delay: 1.2s; }
+.ft-currency-small { width: 28px; height: 28px; font-size: 14px; top: 40px; left: -8px; animation-delay: 2.2s; }
+
+@keyframes ft-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.ft-preview-card {
+  position: relative;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+}
+.ft-preview-top { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #aab3d1; }
+.ft-preview-badge { padding: 3px 8px; border-radius: 999px; background: rgba(34, 211, 238, 0.15); color: #22d3ee; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; }
+.ft-preview-title { margin: 10px 0 2px; font-size: 18px; font-weight: 700; color: #fff; }
+.ft-preview-subtitle { margin: 0 0 12px; font-size: 13px; color: #aab3d1; }
+.ft-preview-chart { display: flex; align-items: flex-end; gap: 8px; height: 70px; }
+.ft-preview-chart span { flex: 1; border-radius: 6px 6px 2px 2px; background: linear-gradient(180deg, #22d3ee, #7c5cff); }
+.ft-preview-labels { display: flex; justify-content: space-between; margin-top: 8px; font-size: 10px; letter-spacing: 0.12em; color: #8a94b8; }
+.ft-brand-footer { margin: 0; font-size: 12px; color: #8a94b8; }
+
+/* ---------- Right: form panel ---------- */
+.ft-form-panel {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 44px 40px;
+  background: #ffffff;
+  color: #151a2e;
+}
+.ft-form-tag { font-size: 12px; letter-spacing: 0.14em; font-weight: 700; color: #7c5cff; }
+.ft-form-heading h2 { margin: 8px 0 6px; font-size: 28px; color: #0d1128; }
+.ft-form-heading p { margin: 0 0 20px; color: #5b6482; font-size: 14px; }
+
+.ft-auth-error {
+  margin-bottom: 14px; padding: 10px 12px; border-radius: 10px;
+  background: #fdecee; color: #b3261e; font-size: 14px; border: 1px solid #f6c4c8;
+}
+
+.ft-form { display: flex; flex-direction: column; gap: 16px; }
+.ft-field { display: flex; flex-direction: column; gap: 6px; }
+.ft-field label { font-size: 13px; font-weight: 600; color: #2a3150; }
+.ft-field input {
+  width: 100%; padding: 12px 14px; font-size: 15px;
+  border: 1.5px solid #dfe3f0; border-radius: 12px; background: #f8f9fd; color: #151a2e;
+  outline: none; transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+.ft-field input:focus { border-color: #7c5cff; background: #fff; box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.15); }
+.ft-field small { font-size: 12px; color: #7a829f; }
+
+.ft-password-wrap { position: relative; }
+.ft-password-wrap input { padding-right: 64px; }
+.ft-password-toggle {
+  position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+  border: none; background: transparent; cursor: pointer;
+  font-size: 13px; font-weight: 600; color: #7c5cff; padding: 6px 8px; border-radius: 8px;
+}
+.ft-password-toggle:hover { background: rgba(124, 92, 255, 0.1); }
+
+.ft-submit {
+  margin-top: 4px; padding: 13px; border: none; border-radius: 12px; cursor: pointer;
+  font-size: 16px; font-weight: 700; color: #fff;
+  background: linear-gradient(135deg, #7c5cff, #22a6e8);
+  box-shadow: 0 10px 24px rgba(124, 92, 255, 0.35);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.ft-submit:hover { transform: translateY(-1px); box-shadow: 0 14px 28px rgba(124, 92, 255, 0.45); }
+.ft-submit:active { transform: translateY(0); }
+
+.ft-switch { margin: 18px 0 0; font-size: 14px; color: #5b6482; text-align: center; }
+.ft-link { border: none; background: none; padding: 0; cursor: pointer; font-size: 14px; font-weight: 700; color: #7c5cff; }
+.ft-link:hover { text-decoration: underline; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .ft-auth-card { grid-template-columns: 1fr; max-width: 480px; }
+  .ft-brand-panel { padding: 24px; }
+  .ft-money-scene, .ft-brand-footer, .ft-feature-list { display: none; }
+  .ft-brand-copy h1 { font-size: 30px; }
+  .ft-form-panel { padding: 28px 22px; }
+}

@@ -18,6 +18,12 @@ const TransactionSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  // Har transaction kisi ek user ki hai
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: true
+  },
   createdAt: {
     type: Date,
     default: Date.now

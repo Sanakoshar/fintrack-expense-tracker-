@@ -1,10 +1,13 @@
 const Transaction = require('../models/Transaction');
 
-// @desc    Get all transactions (newest date first)
+// @desc    Get logged-in user's transactions
 // @route   GET /api/v1/transactions
 exports.getTransactions = async (req, res, next) => {
   try {
-    const transactions = await Transaction.find().sort({ date: -1, createdAt: -1 });
+    const transactions = await Transaction.find({ user: req.user.id }).sort({
+      date: -1,
+      createdAt: -1
+    });
 
     return res.status(200).json({
       success: true,
@@ -16,12 +19,18 @@ exports.getTransactions = async (req, res, next) => {
   }
 };
 
-// @desc    Add transaction
+// @desc    Add transaction (is user ke naam se)
 // @route   POST /api/v1/transactions
 exports.addTransaction = async (req, res, next) => {
   try {
     const { text, amount, category, date } = req.body;
-    const transaction = await Transaction.create({ text, amount, category, date });
+    const transaction = await Transaction.create({
+      text,
+      amount,
+      category,
+      date,
+      user: req.user.id
+    });
 
     return res.status(201).json({ success: true, data: transaction });
   } catch (err) {
@@ -33,11 +42,14 @@ exports.addTransaction = async (req, res, next) => {
   }
 };
 
-// @desc    Delete transaction
+// @desc    Delete transaction (sirf apni)
 // @route   DELETE /api/v1/transactions/:id
 exports.deleteTransaction = async (req, res, next) => {
   try {
-    const transaction = await Transaction.findById(req.params.id);
+    const transaction = await Transaction.findOne({
+      _id: req.params.id,
+      user: req.user.id
+    });
 
     if (!transaction) {
       return res.status(404).json({ success: false, error: 'No transaction found' });

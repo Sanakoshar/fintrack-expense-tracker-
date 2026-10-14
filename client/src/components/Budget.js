@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 import { formatMoney, monthKey } from '../utils/format';
 
 export const Budget = ({ transactions }) => {
+  const { user } = useContext(AuthContext);
+  // Budget har user ka alag save hota hai
+  const storageKey = `monthlyBudget_${user ? user.id : 'guest'}`;
+
   const [budget, setBudget] = useState(
-    Number(localStorage.getItem('monthlyBudget')) || 0
+    Number(localStorage.getItem(storageKey)) || 0
   );
   const [input, setInput] = useState('');
 
-  // Is mahine ka (current month) total kharcha
   const thisMonth = new Date().toISOString().slice(0, 7);
   const spent = transactions
     .filter(t => t.amount < 0 && monthKey(t.date) === thisMonth)
@@ -17,7 +21,7 @@ export const Budget = ({ transactions }) => {
     e.preventDefault();
     const value = Number(input);
     if (value > 0) {
-      localStorage.setItem('monthlyBudget', value);
+      localStorage.setItem(storageKey, value);
       setBudget(value);
       setInput('');
     }
