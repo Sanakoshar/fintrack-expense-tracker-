@@ -4,7 +4,6 @@ import { Transaction } from './Transaction';
 export const TransactionList = ({ transactions }) => {
   return (
     <>
-      <h3>History</h3>
       {transactions.length === 0 ? (
         <p className="empty">No transactions found.</p>
       ) : (

@@ -7,6 +7,7 @@ import { TransactionList } from './components/TransactionList';
 import { AddTransaction } from './components/AddTransaction';
 import { Filters } from './components/Filters';
 import { CategoryChart } from './components/CategoryChart';
+import { CashFlowChart } from './components/CashFlowChart';
 import { Budget } from './components/Budget';
 import { AuthForm } from './components/AuthForm';
 import { GlobalProvider, GlobalContext } from './context/GlobalState';
@@ -54,39 +55,92 @@ function Dashboard() {
   };
 
   return (
-    <div className="container">
-      <Header />
-      {error && <p className="alert over">{String(error)}</p>}
-      <Balance transactions={filtered} />
-      <IncomeExpenses transactions={filtered} />
-      <Budget transactions={transactions} />
-      <CategoryChart transactions={filtered} />
-      <Filters
-        transactions={transactions}
-        month={month}
-        setMonth={setMonth}
-        category={category}
-        setCategory={setCategory}
-        search={search}
-        setSearch={setSearch}
-      />
-      <button className="export-btn" onClick={exportCSV}>
-        Export CSV
-      </button>
-      <TransactionList transactions={filtered} />
-      <AddTransaction />
+    <div className="ft-dashboard-app">
+      {/* Top Navigation Bar */}
+      <header className="ft-top-navbar">
+        <Header />
+      </header>
+
+      {/* Main Full-Width Dashboard Container */}
+      <main className="ft-dashboard-layout">
+        {error && <p className="alert over">{String(error)}</p>}
+
+        {/* Top Overview Cards Row */}
+        <section className="ft-stats-row">
+          <div className="ft-stat-card ft-balance-card">
+            <Balance transactions={filtered} />
+          </div>
+
+          <div className="ft-stat-card ft-cashflow-card">
+            <IncomeExpenses transactions={filtered} />
+          </div>
+
+          <div className="ft-stat-card ft-budget-card">
+            <Budget transactions={transactions} />
+          </div>
+        </section>
+
+        {/* 2-Column Main Workspace */}
+        <div className="ft-workspace-grid">
+          {/* Left Column: Transaction Feed & Analytics Graph */}
+          <div className="ft-main-column">
+            <section className="ft-card ft-history-section">
+              <div className="ft-card-header">
+                <div>
+                  <h3 className="ft-card-title">Transaction History</h3>
+                  <p className="ft-card-subtitle">
+                    Showing {filtered.length} of {transactions.length} records
+                  </p>
+                </div>
+                <button className="export-btn" onClick={exportCSV} title="Download CSV report">
+                  📥 Export CSV
+                </button>
+              </div>
+
+              <Filters
+                transactions={transactions}
+                month={month}
+                setMonth={setMonth}
+                category={category}
+                setCategory={setCategory}
+                search={search}
+                setSearch={setSearch}
+              />
+
+              <TransactionList transactions={filtered} />
+            </section>
+
+            {/* Visual Analytics Chart (Fills the empty space!) */}
+            <section className="ft-card ft-analytics-card">
+              <CashFlowChart transactions={filtered} />
+            </section>
+          </div>
+
+          {/* Right Column: Add Transaction & Category Analytics */}
+          <aside className="ft-sidebar-stack">
+            <section className="ft-card ft-add-section">
+              <AddTransaction />
+            </section>
+
+            <section className="ft-card ft-chart-section">
+              <CategoryChart transactions={filtered} />
+            </section>
+          </aside>
+        </div>
+      </main>
     </div>
   );
 }
 
-// Login hai toh Dashboard, nahi toh Login/Register form
+// Login check: Logged in -> Full Dashboard, Not logged in -> FinTrack Auth
 function AppContent() {
   const { user, loading } = useContext(AuthContext);
 
   if (loading) {
     return (
-      <div className="container">
-        <p>Loading...</p>
+      <div className="ft-loading-screen">
+        <div className="ft-spinner" />
+        <p>Loading your financial dashboard...</p>
       </div>
     );
   }

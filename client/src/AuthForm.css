@@ -1,3 +1,9 @@
+/* ========================================================
+   FinTrack - Ultra-Modern Dark Theme Auth Page (Login / Signup)
+   ======================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
 .ft-auth {
   position: relative;
   width: 100%;
@@ -5,158 +11,485 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 32px 20px;
   box-sizing: border-box;
   overflow: hidden;
-  background: #070b17;
-  font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+  background: #060913;
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: #f1f5f9;
 }
 
-.ft-auth *, .ft-auth *::before, .ft-auth *::after { box-sizing: border-box; }
+.ft-auth *, 
+.ft-auth *::before, 
+.ft-auth *::after { 
+  box-sizing: border-box; 
+}
 
+/* Background Ambient Glows */
 .ft-auth-glow {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.55;
+  filter: blur(120px);
+  opacity: 0.45;
   pointer-events: none;
 }
-.ft-auth-glow-one { width: 420px; height: 420px; background: #7c5cff; top: -120px; left: -100px; }
-.ft-auth-glow-two { width: 380px; height: 380px; background: #22d3ee; bottom: -120px; right: -80px; }
 
+.ft-auth-glow-one { 
+  width: 450px; 
+  height: 450px; 
+  background: #10b981; 
+  top: -100px; 
+  left: -80px; 
+}
+
+.ft-auth-glow-two { 
+  width: 420px; 
+  height: 420px; 
+  background: #06b6d4; 
+  bottom: -100px; 
+  right: -80px; 
+}
+
+/* Main Card Container */
 .ft-auth-card {
   position: relative;
-  z-index: 1;
+  z-index: 10;
   width: 100%;
-  max-width: 1020px;
+  max-width: 1040px;
   display: grid;
   grid-template-columns: 1.05fr 1fr;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  background: #0d1326;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.65);
+  animation: ft-scale-in 0.4s ease-out;
 }
 
-/* ---------- Left: brand panel ---------- */
+@keyframes ft-scale-in {
+  from { opacity: 0; transform: scale(0.97) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ========================================================
+   LEFT: Brand Hero Panel
+   ======================================================== */
 .ft-brand-panel {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 36px;
-  color: #e8ecf8;
-  background: linear-gradient(160deg, #141a35 0%, #0d1128 100%);
-  overflow: hidden;
+  justify-content: space-between;
+  padding: 44px 40px;
+  color: #f1f5f9;
+  background: radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.12) 0%, transparent 60%), #0c1122;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.ft-logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; color: #fff; }
+.ft-logo { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  font-size: 24px; 
+  font-weight: 800; 
+  color: #fff; 
+  letter-spacing: -0.5px;
+}
+
 .ft-logo-icon {
-  display: inline-grid; place-items: center;
-  width: 34px; height: 34px; border-radius: 10px;
-  background: linear-gradient(135deg, #7c5cff, #22d3ee);
-  color: #fff; font-weight: 800;
+  display: inline-grid; 
+  place-items: center;
+  width: 38px; 
+  height: 38px; 
+  border-radius: 12px;
+  background: linear-gradient(135deg, #10b981, #06b6d4);
+  color: #042419; 
+  font-weight: 800;
+  font-size: 20px;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
 }
-.ft-logo-dot { color: #22d3ee; }
 
-.ft-eyebrow { font-size: 12px; letter-spacing: 0.14em; color: #22d3ee; font-weight: 700; }
-.ft-brand-copy h1 { margin: 10px 0 12px; font-size: 40px; line-height: 1.1; color: #fff; }
+.ft-logo-dot { 
+  color: #10b981; 
+}
+
+.ft-brand-copy {
+  margin-top: 28px;
+}
+
+.ft-eyebrow { 
+  font-size: 11px; 
+  letter-spacing: 2px; 
+  color: #34d399; 
+  font-weight: 700; 
+  text-transform: uppercase;
+}
+
+.ft-brand-copy h1 { 
+  margin: 12px 0 16px; 
+  font-size: 42px; 
+  line-height: 1.12; 
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  color: #fff; 
+}
+
 .ft-brand-copy h1 span {
-  background: linear-gradient(90deg, #a78bfa, #22d3ee);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: #34d399;
 }
-.ft-brand-copy p { margin: 0 0 16px; color: #aab3d1; line-height: 1.6; font-size: 15px; }
-.ft-feature-list { display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: #cfd6ee; }
 
-/* floating money + preview */
-.ft-money-scene { position: relative; margin-top: auto; min-height: 210px; }
-.ft-currency {
-  position: absolute; display: grid; place-items: center;
-  border-radius: 50%; font-weight: 800; color: #fff;
-  background: linear-gradient(135deg, #7c5cff, #22d3ee);
-  box-shadow: 0 10px 24px rgba(124, 92, 255, 0.4);
-  animation: ft-float 5s ease-in-out infinite;
-  z-index: 2;
+.ft-brand-copy p { 
+  margin: 0 0 20px; 
+  color: #94a3b8; 
+  line-height: 1.6; 
+  font-size: 14px; 
+  max-width: 380px;
 }
-.ft-currency-dollar { width: 46px; height: 46px; font-size: 22px; top: -14px; right: 6px; }
-.ft-currency-rupee { width: 40px; height: 40px; font-size: 20px; bottom: 10px; right: -6px; animation-delay: 1.2s; }
-.ft-currency-small { width: 28px; height: 28px; font-size: 14px; top: 40px; left: -8px; animation-delay: 2.2s; }
+
+.ft-feature-list { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 10px; 
+  font-size: 13px; 
+  color: #cbd5e1; 
+}
+
+/* Floating Scene & Financial Preview */
+.ft-money-scene { 
+  position: relative; 
+  margin-top: 24px;
+}
+
+.ft-currency {
+  position: absolute; 
+  display: grid; 
+  place-items: center;
+  border-radius: 50%; 
+  font-weight: 800; 
+  color: #042419;
+  background: linear-gradient(135deg, #34d399, #22d3ee);
+  box-shadow: 0 8px 20px rgba(52, 211, 153, 0.35);
+  animation: ft-float 4.5s ease-in-out infinite;
+  z-index: 3;
+}
+
+.ft-currency-dollar { 
+  width: 46px; 
+  height: 46px; 
+  font-size: 22px; 
+  top: -18px; 
+  left: 10px; 
+}
+
+.ft-currency-rupee { 
+  width: 42px; 
+  height: 42px; 
+  font-size: 20px; 
+  top: 15px; 
+  right: -8px; 
+  animation-delay: -1.8s; 
+}
+
+.ft-currency-small { 
+  width: 30px; 
+  height: 30px; 
+  font-size: 14px; 
+  bottom: 0px; 
+  left: 30px; 
+  animation-delay: -3s; 
+}
 
 @keyframes ft-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-10px) rotate(6deg); }
 }
 
 .ft-preview-card {
   position: relative;
-  padding: 18px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(6px);
+  padding: 20px 22px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(10px);
 }
-.ft-preview-top { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #aab3d1; }
-.ft-preview-badge { padding: 3px 8px; border-radius: 999px; background: rgba(34, 211, 238, 0.15); color: #22d3ee; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; }
-.ft-preview-title { margin: 10px 0 2px; font-size: 18px; font-weight: 700; color: #fff; }
-.ft-preview-subtitle { margin: 0 0 12px; font-size: 13px; color: #aab3d1; }
-.ft-preview-chart { display: flex; align-items: flex-end; gap: 8px; height: 70px; }
-.ft-preview-chart span { flex: 1; border-radius: 6px 6px 2px 2px; background: linear-gradient(180deg, #22d3ee, #7c5cff); }
-.ft-preview-labels { display: flex; justify-content: space-between; margin-top: 8px; font-size: 10px; letter-spacing: 0.12em; color: #8a94b8; }
-.ft-brand-footer { margin: 0; font-size: 12px; color: #8a94b8; }
 
-/* ---------- Right: form panel ---------- */
-.ft-form-panel {
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 44px 40px;
-  background: #ffffff;
-  color: #151a2e;
+.ft-preview-top { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  font-size: 11px; 
+  color: #94a3b8; 
+  font-weight: 600;
 }
-.ft-form-tag { font-size: 12px; letter-spacing: 0.14em; font-weight: 700; color: #7c5cff; }
-.ft-form-heading h2 { margin: 8px 0 6px; font-size: 28px; color: #0d1128; }
-.ft-form-heading p { margin: 0 0 20px; color: #5b6482; font-size: 14px; }
+
+.ft-preview-badge { 
+  padding: 4px 8px; 
+  border-radius: 999px; 
+  background: rgba(52, 211, 153, 0.15); 
+  color: #34d399; 
+  font-size: 9px; 
+  font-weight: 800; 
+  letter-spacing: 1px; 
+}
+
+.ft-preview-title { 
+  margin: 12px 0 2px; 
+  font-size: 19px; 
+  font-weight: 700; 
+  color: #fff; 
+  letter-spacing: -0.5px;
+}
+
+.ft-preview-subtitle { 
+  margin: 0 0 16px; 
+  font-size: 12px; 
+  color: #94a3b8; 
+}
+
+.ft-preview-chart { 
+  display: flex; 
+  align-items: flex-end; 
+  gap: 8px; 
+  height: 65px; 
+}
+
+.ft-preview-chart span { 
+  flex: 1; 
+  border-radius: 6px 6px 2px 2px; 
+  background: linear-gradient(180deg, #34d399, #059669); 
+}
+
+.ft-preview-labels { 
+  display: flex; 
+  justify-content: space-between; 
+  margin-top: 10px; 
+  font-size: 9px; 
+  letter-spacing: 1px; 
+  color: #64748b; 
+  font-weight: 700;
+}
+
+.ft-brand-footer { 
+  margin-top: 24px; 
+  font-size: 11px; 
+  color: #64748b; 
+}
+
+/* ========================================================
+   RIGHT: Form Panel (100% Dark, High-Contrast & Readable)
+   ======================================================== */
+.ft-form-panel {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center;
+  padding: 48px 44px;
+  background: #0f172a; /* UNIFIED LUXURIOUS DARK BACKGROUND */
+  color: #f1f5f9;
+}
+
+.ft-form-tag { 
+  font-size: 11px; 
+  letter-spacing: 2px; 
+  font-weight: 700; 
+  color: #34d399; 
+  text-transform: uppercase;
+}
+
+.ft-form-heading h2 { 
+  margin: 10px 0 6px; 
+  font-size: 30px; 
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  color: #ffffff; 
+}
+
+.ft-form-heading p { 
+  margin: 0 0 26px; 
+  color: #94a3b8; 
+  font-size: 14px; 
+  line-height: 1.5;
+}
 
 .ft-auth-error {
-  margin-bottom: 14px; padding: 10px 12px; border-radius: 10px;
-  background: #fdecee; color: #b3261e; font-size: 14px; border: 1px solid #f6c4c8;
+  margin-bottom: 18px; 
+  padding: 12px 16px; 
+  border-radius: 10px;
+  background: rgba(244, 63, 94, 0.12); 
+  color: #fda4af; 
+  font-size: 13px; 
+  font-weight: 600;
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  animation: ft-shake 0.3s ease;
 }
 
-.ft-form { display: flex; flex-direction: column; gap: 16px; }
-.ft-field { display: flex; flex-direction: column; gap: 6px; }
-.ft-field label { font-size: 13px; font-weight: 600; color: #2a3150; }
+@keyframes ft-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.ft-form { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 18px; 
+}
+
+.ft-field { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 8px; 
+}
+
+/* High Contrast, Crystal-Clear Field Labels */
+.ft-field label { 
+  font-size: 13px; 
+  font-weight: 600; 
+  color: #cbd5e1; /* Clear light grey on dark background */
+  letter-spacing: 0.2px;
+}
+
+/* High Contrast, Crisp Visible Inputs */
 .ft-field input {
-  width: 100%; padding: 12px 14px; font-size: 15px;
-  border: 1.5px solid #dfe3f0; border-radius: 12px; background: #f8f9fd; color: #151a2e;
-  outline: none; transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  width: 100%; 
+  padding: 14px 16px; 
+  font-size: 15px;
+  font-family: inherit;
+  border: 1.5px solid rgba(255, 255, 255, 0.12); 
+  border-radius: 12px; 
+  background: rgba(255, 255, 255, 0.04); 
+  color: #ffffff !important; /* PURE WHITE TEXT - ALWAYS 100% VISIBLE */
+  outline: none; 
+  transition: all 0.2s ease;
 }
-.ft-field input:focus { border-color: #7c5cff; background: #fff; box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.15); }
-.ft-field small { font-size: 12px; color: #7a829f; }
 
-.ft-password-wrap { position: relative; }
-.ft-password-wrap input { padding-right: 64px; }
+.ft-field input::placeholder {
+  color: #64748b;
+  opacity: 1;
+}
+
+.ft-field input:focus { 
+  border-color: #34d399; 
+  background: rgba(255, 255, 255, 0.07); 
+  box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.2); 
+  color: #ffffff !important;
+}
+
+/* Fix browser autofill turns text invisible */
+.ft-field input:-webkit-autofill,
+.ft-field input:-webkit-autofill:hover,
+.ft-field input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-box-shadow: 0 0 0px 1000px #1e293b inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: #ffffff;
+}
+
+.ft-field small { 
+  font-size: 12px; 
+  color: #64748b; 
+}
+
+.ft-password-wrap { 
+  position: relative; 
+}
+
+.ft-password-wrap input { 
+  padding-right: 70px; 
+}
+
 .ft-password-toggle {
-  position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
-  border: none; background: transparent; cursor: pointer;
-  font-size: 13px; font-weight: 600; color: #7c5cff; padding: 6px 8px; border-radius: 8px;
+  position: absolute; 
+  right: 12px; 
+  top: 50%; 
+  transform: translateY(-50%);
+  border: none; 
+  background: transparent; 
+  cursor: pointer;
+  font-size: 13px; 
+  font-weight: 700; 
+  color: #34d399; 
+  padding: 6px 10px; 
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
-.ft-password-toggle:hover { background: rgba(124, 92, 255, 0.1); }
 
+.ft-password-toggle:hover { 
+  background: rgba(52, 211, 153, 0.12); 
+  color: #6ee7b7;
+}
+
+/* Emerald Glow Submit Button */
 .ft-submit {
-  margin-top: 4px; padding: 13px; border: none; border-radius: 12px; cursor: pointer;
-  font-size: 16px; font-weight: 700; color: #fff;
-  background: linear-gradient(135deg, #7c5cff, #22a6e8);
-  box-shadow: 0 10px 24px rgba(124, 92, 255, 0.35);
-  transition: transform 0.15s, box-shadow 0.15s;
+  margin-top: 8px; 
+  padding: 15px; 
+  border: none; 
+  border-radius: 12px; 
+  cursor: pointer;
+  font-size: 15px; 
+  font-weight: 700; 
+  font-family: inherit;
+  color: #042419;
+  background: linear-gradient(135deg, #34d399, #10b981);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
+  transition: all 0.2s ease;
 }
-.ft-submit:hover { transform: translateY(-1px); box-shadow: 0 14px 28px rgba(124, 92, 255, 0.45); }
-.ft-submit:active { transform: translateY(0); }
 
-.ft-switch { margin: 18px 0 0; font-size: 14px; color: #5b6482; text-align: center; }
-.ft-link { border: none; background: none; padding: 0; cursor: pointer; font-size: 14px; font-weight: 700; color: #7c5cff; }
-.ft-link:hover { text-decoration: underline; }
+.ft-submit:hover { 
+  background: linear-gradient(135deg, #6ee7b7, #34d399);
+  transform: translateY(-2px); 
+  box-shadow: 0 14px 30px rgba(16, 185, 129, 0.45); 
+}
 
-/* ---------- Responsive ---------- */
+.ft-submit:active { 
+  transform: translateY(0); 
+}
+
+/* Switch between Login and Register */
+.ft-switch { 
+  margin: 22px 0 0; 
+  font-size: 14px; 
+  color: #94a3b8; 
+  text-align: center; 
+}
+
+.ft-link { 
+  border: none; 
+  background: none; 
+  padding: 0; 
+  cursor: pointer; 
+  font-size: 14px; 
+  font-weight: 700; 
+  font-family: inherit;
+  color: #34d399; 
+  transition: all 0.2s ease;
+}
+
+.ft-link:hover { 
+  text-decoration: underline; 
+  color: #6ee7b7;
+}
+
+/* ========================================================
+   Responsive (Mobile & Tablets)
+   ======================================================== */
 @media (max-width: 860px) {
-  .ft-auth-card { grid-template-columns: 1fr; max-width: 480px; }
-  .ft-brand-panel { padding: 24px; }
-  .ft-money-scene, .ft-brand-footer, .ft-feature-list { display: none; }
-  .ft-brand-copy h1 { font-size: 30px; }
-  .ft-form-panel { padding: 28px 22px; }
+  .ft-auth-card { 
+    grid-template-columns: 1fr; 
+    max-width: 480px; 
+  }
+  .ft-brand-panel { 
+    padding: 30px 26px; 
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .ft-money-scene, 
+  .ft-brand-footer, 
+  .ft-feature-list { 
+    display: none; 
+  }
+  .ft-brand-copy h1 { 
+    font-size: 32px; 
+  }
+  .ft-form-panel { 
+    padding: 32px 26px; 
+  }
 }
