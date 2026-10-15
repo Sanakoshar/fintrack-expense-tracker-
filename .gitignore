@@ -24,3 +24,5 @@ client/build/
 Thumbs.db
 .vscode/
 .idea/
+
+config/config.env
